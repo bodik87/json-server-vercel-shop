@@ -1,5 +1,6 @@
 // See https://github.com/typicode/json-server#module
 const jsonServer = require("json-server");
+const nocache = require("nocache");
 
 const server = jsonServer.create();
 
@@ -17,6 +18,7 @@ const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
+server.use(nocache);
 // Add this before server.use(router)
 server.use(
   jsonServer.rewriter({
